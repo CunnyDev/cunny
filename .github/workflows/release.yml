@@ -1,0 +1,22 @@
+name: Publish Release
+
+on:
+  push:
+    tags:
+      - "*.*"
+
+jobs:
+  main:
+    name: Publish Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Publish Release
+        uses: Leomotors/auto-publish-release@main
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref }}
+          title: "cunny"
